@@ -1601,6 +1601,20 @@
     if (chartVisible) drawChart();
   }
 
+  // ── URL PARAMETER PRE-POPULATION ──
+  // Accepts: incomeGoal, loanSize, commRate, trailCommRate, currentDeals, convRate, cpl
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var map = ['incomeGoal', 'loanSize', 'commRate', 'trailCommRate', 'currentDeals', 'convRate', 'cpl'];
+    map.forEach(function(id) {
+      var val = params.get(id);
+      if (val !== null && val !== '') {
+        var el = document.getElementById(id);
+        if (el) { el.value = val; }
+      }
+    });
+  })();
+
   calculate();
 </script>
 </body>
